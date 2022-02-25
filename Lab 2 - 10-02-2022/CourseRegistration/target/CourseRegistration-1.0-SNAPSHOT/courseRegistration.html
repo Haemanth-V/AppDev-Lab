@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <style type="text/css">
+            body {
+                background-color: #0066ff;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            label, input {
+                display: table-row;
+                margin-top: 15px;
+                margin-right: 10px;
+                height: 20px;
+                align-content: center;
+            }
+            
+            label .button {
+                height: 30px;
+                border-radius: 5px;
+                width: 80px;
+            }
+
+            label {
+                margin-bottom: 20px;
+            }
+        </style>
+        
+        <script >
+            function fetchUsername(){
+                var username = request.getParameter("username");
+                console.log(username); 
+            }
+            function validate() {
+                var roll = document.getElementById("roll").value;
+                var year = document.getElementById("year").value;
+                var semester = document.getElementById("semester").value;
+                var course = document.getElementById("course").value;
+                
+                if (roll==""){
+                    alert("Please enter your roll number");
+                } else if (year == ""){
+                    alert("Please enter your year of study");
+                } else if (Integer.parseInt(year) > 6) {
+                    alert("Year cannot be greater than 6");
+                } else if (semester == ""){
+                    alert("Please enter your semester");
+                } else if (Integer.parseInt(semester) > 8) {
+                    alert("Semester cannot be greater than 8");
+                } else if (course == "") {
+                    alert("Enter a course");
+                } else {
+                    return true;
+                }
+                
+                return false;
+            }
+        </script>
+        
+    </head>
+    
+    <body onload="fetchusername()" >
+    <div id="main">
+            <center>
+                <Form name="Course Registration" method="post" onsubmit="return validate()" action="RegisterCourses">
+                </label>
+                <label>
+                <input type="textbox" name="rno" value="Roll Number" readonly/>
+                <input type="number" id="roll"/>
+                </label>
+                <label>
+                <input type="textbox" name="yr" value="Year" readonly/>
+                <input type="number" id="year"/>
+                </label>
+                <label>
+                <input type="textbox" name="sem" value="Semester" readonly/>
+                <input type="number" id="semester"/>
+                </label>
+                <label>
+                    <input type="textbox" name="cr" value="Course" readonly/>
+                <input type="textbox" id="course"/><br><br>
+                </label>
+                <label>
+                <input class="button" type="submit" value="Register"/>
+                </label>
+            </form>
+                </center>
+        </div>
+    </body></html>

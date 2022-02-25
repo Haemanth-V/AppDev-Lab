@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Sign Up</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style type="text/css">
+            body {
+                background-color: #0066ff;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            label, input {
+                display: table-row;
+                margin-top: 15px;
+                margin-right: 10px;
+                height: 20px;
+                align-content: center;
+            }
+            
+            label .button {
+                height: 30px;
+                border-radius: 5px;
+                width: 80px;
+            }
+
+            label {
+                margin-bottom: 20px;
+            }
+        </style>
+        
+        <script>
+            function registration() {
+                var uname = document.getElementById("t1").value;
+                var pwd = document.getElementById("t2").value;
+                var cpwd = document.getElementById("t3").value;
+                console.log("In registeration");
+
+                //email id expression code
+                var pwd_expression =
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+                var letters = /^[A-Za-z]+$/;
+                // var filter =
+                //   /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                var filter = /^([a-zA-Z0-9_\.\-])+\@gmail\.com$/;
+
+                if (uname == "") {
+                  alert("Please enter a username");
+                } else if (!letters.test(uname)) {
+                  alert("User name field required only alphabet characters");
+                } else if (pwd == "") {
+                  alert("Please enter Password");
+                } else if (!pwd_expression.test(pwd)) {
+                  alert(
+                    "Password must have atleast one upper case letter, lower case letter, special character and digit"
+                  );
+                } else if (pwd.length < 6) {
+                  alert("Password minimum length is 6");
+                } else if (pwd.length > 12) {
+                  alert("Password max length is 12");
+                } else if (cpwd == "") {
+                  alert("Please Confirm your Password");
+                } else if (pwd != cpwd) {
+                  alert("Password not Matched");
+                } else {
+                  return true;
+                }
+                return false;
+              }
+        </script>
+        
+        
+    </head>
+    <body>
+        <div id="main">
+            <center>
+                <h1>Signup</h1>
+            <Form name="Signup" method="post" action="SignupServlet" onsubmit="return registration()">
+                <label><input type="text" name="uname" value="Username" readonly/>
+                <input type="textbox" name="username" id="t1"/>
+                </label>
+                <label><input type="text" name="pwd" value="Password" readonly/>
+                <input type="password" name="password" id="t2"/>
+                </label>
+                <label><input type="text" name="cpwd" value="Confirm Password" readonly/>
+                <input type="password" name="confirmPassword" id="t3"/><br><br>
+                </label>
+                <label>
+                    <input class="button" type="submit" value="Submit" />
+                </label>
+            </form>
+                </center>
+        </div>
+    </body>
+</html>

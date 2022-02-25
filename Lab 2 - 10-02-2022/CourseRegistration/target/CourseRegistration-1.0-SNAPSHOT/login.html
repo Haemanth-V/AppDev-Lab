@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style type="text/css">
+            body {
+                background-color: #0066ff;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            label, input {
+                display: table-row;
+                margin-top: 15px;
+                margin-right: 10px;
+                height: 20px;
+                align-content: center;
+            }
+            
+            label .button {
+                height: 30px;
+                border-radius: 5px;
+                width: 80px;
+            }
+
+            label {
+                margin-bottom: 20px;
+            }
+        </style>
+        
+        <script>
+          function registration() {
+            var uname = document.getElementById("t1").value;
+            var pwd = document.getElementById("t2").value;
+
+            console.log("In registeration");
+
+            if (uname == "") {
+              alert("Please enter your username");
+            } else if (pwd == "") {
+              alert("Please enter your password");
+            } else {
+              return true;
+            }
+            return false;
+          }
+        </script>
+        
+        
+        
+    </head>
+    <body>
+        <div id="main">
+            <center>
+                <h1>Login</h1>
+                <Form name="Login" method="post" onsubmit="return registration()">
+                    <label>
+                        <input type="textbox" name="uname" value="Username" readonly/>
+                        <input type="textbox" name="username" id="t1"/>
+                    </label>
+                    <label>
+                        <input type="textbox" name="pwd" value="Password" readonly/>
+                        <input type="password" name="password" id="t2"/><br><br>
+                    </label>
+                    <label>
+                        <input class="button" type="submit" value="Sign In" onclick="registration()" formaction="LoginServlet"/>
+                    </label>
+                </form>
+                <form action="signup.html" method="post">
+                    <label>
+                        <input class="button" type="submit" value="Sign Up" />
+                    </label>
+                </form>
+                </center>
+        </div>
+    </body>
+</html>

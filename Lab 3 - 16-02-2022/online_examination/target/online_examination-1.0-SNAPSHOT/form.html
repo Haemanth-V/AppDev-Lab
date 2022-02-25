@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+
+<script>
+    var cur_qn = 0;      
+    var answers = [
+        "All mentioned above",
+        "True",
+        "GET method",
+        "All of the above",
+        "writing-mode"
+        
+    ];    
+    var tot_qn = answers.length;    
+    var responses = [
+        null,null,null,null,null,null
+    ];    
+    var score=0;
+    
+</script>
+
+ <html>
+ <head>
+     <title>Online Examination</title>
+     <style >
+         
+         .qns {
+             display: none
+         }
+         
+         .qn {
+             margin-left: 30px;
+             margin-top: 50px;
+             margin-bottom: 20px;
+         }
+         
+         .space {
+             margin-right: 100px;
+         }
+         
+         .btn {
+             width: 80px;
+             height: 25px;
+         }
+         
+     </style>
+   
+ <body>
+ <center><h1>Online Examination</h1></center><br>
+        <form onsubmit="return validation()" action="exam_server.jsp" method="post">
+            <center><div class="details">
+                Roll Number: <input type="number" id="roll" name="roll" class="space"/>
+                Name: <input type="text" id="name" name="name"/>
+                </div></center><br>
+            <hr/>
+            <div>
+            <center>
+                <h2 style="margin-top: 30px">CSLR62: App Development Laboratory</h2>
+            </center>
+                <div style="width:'100%'; justify-content: 'space-between'; margin-left: 30px">
+                <p style="font-size: 16px; display: 'inline-block'">
+                Date: <script> document.write(new Date().toLocaleDateString()); </script>
+                            <p>
+<!--                <div style="float: right; width: 50%; align-content: 'flex-end'">
+                         <p style="font-size: 16px">
+               Time: <script> 
+                    var today = new Date();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds(); 
+                document.write(time); </script>
+                                    <p></td>-->
+                    
+<p style="font-size: 16px"><b style="text-align-last: right">Total Marks: 5</b></p>
+                <!-- </div>  -->
+                </div><hr/>
+            <div class="qn" id="1">
+                
+                <h4 id="q1">1. Which object of HttpSession can be used to view and manipulate information about a session?                
+                </h4>
+                <div class="options">
+                    <input type="radio" name="option1" id="r1_1"/> <label id="c1_1">Session identifier</label><br>
+                    <input type="radio" name="option1" id="r1_2"/> <label id="c1_2">Creation time</label><br>
+                    <input type="radio" name="option1" id="r1_3"/> <label id="c1_3">Last accessed time</label><br>
+                    <input type="radio" name="option1" id="r1_4"/> <label id="c1_4">All mentioned above</label><br>
+                    <input type="text" name="answer1" id="answer1" hidden/>
+                </div>
+            </div>
+            
+            <div class="qns" id="2">
+                
+                <h4 id="q2">2. Connection Pooling Class manages number of user requests for connections to improve the performance        
+                </h4>
+                <div class="options">
+                    <input type="radio" name="option2" id="r2_1" /> <label id="c2_1">True</label><br>
+                    <input type="radio" name="option2" id="r2_2" /> <label id="c2_2">False</label><br>
+                    <input type="radio" name="option2" id="r2_3" hidden/> <label id="c2_3"></label><br>
+                    <input type="radio" name="option2" id="r2_4" hidden/> <label id="c2_4"></label><br>
+                    <input type="text" name="answer2" id="answer2" hidden/>
+                </div>
+            </div>
+            
+            <div class="qns" id="3">
+                
+                <h4 id="q3">3. Sharing of session data across multiple web servers is called                
+                </h4>
+                <div class="options">
+                    <input type="radio" name="option3" id="r3_1"/> <label id="c3_1">GET method</label><br>
+                    <input type="radio" name="option3" id="r3_2"/> <label id="c3_2">POST method</label><br>
+                    <input type="radio" name="option3" id="r3_3"/> <label id="c3_3">PUT method</label><br>
+                    <input type="radio" name="option3" id="r3_4"/> <label id="c3_4">HEAD method</label><br>
+                    <input type="text" name="answer3" id="answer3"  hidden/>
+                </div>
+            </div>
+            
+            <div class="qns" id="4">
+                
+                <h4 id="q4">4. Which of the following methods can be used to display data in some form using Javascript?              
+                </h4>
+                <div class="options">
+                    <input type="radio" name="option4" id="r4_1"/> <label id="c4_1">document.write()</label><br>
+                    <input type="radio" name="option4" id="r4_2"/> <label id="c4_2">console.log()</label><br>
+                    <input type="radio" name="option4" id="r4_3"/> <label id="c4_3">window.alert()</label><br>
+                    <input type="radio" name="option4" id="r4_4"/> <label id="c4_4">All of the above</label><br>
+                    <input type="text" name="answer4" id="answer4" hidden/>
+                </div>
+            </div>
+            
+            <div class="qns" id="5">
+                
+                <h4 id="q5">5. The CSS property used to specify whether the text is written in the horizontal or vertical direction?            
+                </h4>
+                <div class="options">
+                    <input type="radio" name="option5" id="r5_1"/> <label id="c5_1">writing-mode</label><br>
+                    <input type="radio" name="option5" id="r5_2"/> <label id="c5_2">text-indent</label><br>
+                    <input type="radio" name="option5" id="r5_3"/> <label id="c5_3">word-break</label><br>
+                    <input type="radio" name="option5" id="r5_4"/> <label id="c5_4">None of the above</label><br>
+                    <input type="text" name="answer5" id="answer5" hidden/>
+                </div>
+            </div><br><br>
+            
+            <center>
+                <table cellspacing="2" align="center" cellpadding="8">
+                    <tr><td><button class="btn" type="button" id="prev" onclick="get_prev_qn()">Previous</button></td>
+                        <td><button class="btn" type="button" id="next" onclick="get_next_qn()"/>Next</button></td></tr>
+                </table><br><br>
+                <button class="btn" type="submit"/>Submit</button>
+            <input type="text" id="score" name="score" readonly hidden/>
+            </center>
+        </form>
+    </body>
+    
+    <script>
+        
+    function get_next_qn(){
+        
+        // store the response for current qn
+        for(let i=0; i<4; i++) {
+            var choice = "c"+(cur_qn+1).toString()+"_"+(i+1).toString();
+            var radio = "r"+(cur_qn+1).toString()+"_"+(i+1).toString();
+            var answer = "answer"+(cur_qn+1).toString();
+            
+            if(document.getElementById(radio).checked) {
+                responses[cur_qn] = document.getElementById(choice).innerText;
+                document.getElementById(answer).value = document.getElementById(choice).innerText;
+            }
+        }
+        
+        if(cur_qn+1 === tot_qn) {
+            alert("You have reached the end of the test!");
+            return;
+        }
+        
+        cur_qn = cur_qn+1;  
+        get_qn(cur_qn);
+    }
+    
+    function get_prev_qn() {
+        if(cur_qn === 0) {
+            alert("You are already at the start!");
+            return;
+        }
+        
+        cur_qn = cur_qn-1;  
+        get_qn(cur_qn);
+    }
+    
+    function get_qn(qn_num) {
+        for(let i=0; i<tot_qn; i++){
+            if(qn_num === i) {                
+                document.getElementById((i+1).toString()).classList.remove("qns");
+                document.getElementById((i+1).toString()).classList.add("qn");
+            } else {
+                document.getElementById((i+1).toString()).classList.add("qns");
+            }
+        }
+    }
+    
+    function submit() {
+        
+        // store the response for current qn
+        for(let i=0; i<4; i++) {
+            var choice = "c"+(cur_qn+1).toString()+"_"+(i+1).toString();
+            var radio = "r"+(cur_qn+1).toString()+"_"+(i+1).toString();
+            var answer = "answer"+(cur_qn+1).toString();
+            
+            if(document.getElementById(radio).checked) {
+                responses[cur_qn] = document.getElementById(choice).innerText;
+                document.getElementById(answer).value = document.getElementById(choice).innerText;
+            }
+        }
+        
+        for(let i=0; i<tot_qn; i++) {
+            if(responses[i] === answers[i]){
+                score++;
+            }
+        }
+        document.getElementById("score").value = score.toString();
+        console.log(score);
+    }
+    
+    function validation(){ 
+        var roll = document.getElementById("roll").value;
+        var name = document.getElementById("name").value;
+        var letters = /^[A-Za-z]+$/;
+        console.log(roll);
+        if(roll===""){       
+            alert("Please enter your roll Number");
+            document.getElementById("roll").focus();
+            return false;
+        } else if(name===""){        
+            alert("Please enter your name");
+            document.getElementById("name").focus();
+            return false;
+        } else if(!letters.test(name)){
+            alert("Name can only have letter");
+            document.getElementById("name").focus();
+            return false;
+        }
+        submit();
+        return true;
+    }
+ </script>
+    
+</html>
