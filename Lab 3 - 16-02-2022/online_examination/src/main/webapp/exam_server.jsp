@@ -24,22 +24,6 @@
         <title>Results</title>
     </head>
     <body>
-    <center><h1>Marks Scored</h1></center>
-        <table cellspacing="2" align="center" cellpadding="8" border="1">
-            <tr>
-                <td>Roll</td>
-                <td><%= request.getParameter("roll")%></td>
-            </tr>
-            <tr>
-                <td>Name</td>
-                <td><%= request.getParameter("name")%></td>
-            </tr>
-            <tr>
-                <td>Marks</td>
-                <td><%= score%></td>
-            </tr>
-        </table>
-    </body>
     
     <%
         try
@@ -54,9 +38,9 @@
                 rs.next();
                 String t = "answer"+Integer.toString(i+1);
                 String val = request.getParameter(t);
-                out.println("RESPONSE: " + val);
-                out.println(rs.getString("answer"));
-                out.println(val.equals(rs.getString("answer")));
+//                out.println("RESPONSE: " + val);
+//                out.println(rs.getString("answer"));
+//                out.println(val.equals(rs.getString("answer")));
                 if(val.equals(rs.getString("answer")))
                     score = score+1;
             }
@@ -86,4 +70,22 @@
         out.println("Score:"+Integer.toString(score));
 
     %>
+    
+    <center><h1>Marks Scored</h1></center>
+        <table cellspacing="2" align="center" cellpadding="8" border="1">
+            <tr>
+                <td>Roll</td>
+                <td><%= request.getParameter("roll")%></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><%= request.getParameter("name")%></td>
+            </tr>
+            <tr>
+                <td>Marks</td>
+                <td><%= score%></td>
+            </tr>
+        </table>
+    </body>
+    
 </html>
