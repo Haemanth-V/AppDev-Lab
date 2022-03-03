@@ -1,0 +1,391 @@
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Event Registration</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .col {
+                padding: 7px;
+            }
+            .fee_input {
+                display: inline-block;
+            }
+
+            .fee_placeholder {
+                display: inline-block;
+                position: relative;
+                flost: left;
+                top: 2em;
+            }
+            
+            .btn {
+                width: 70px;
+                height: 30px;
+                margin-top: 20px;
+                margin-right: 10px;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            var edit = false;
+        </script>
+        
+    </head>
+    <body onload="init()" style="background-color: #00ffff">
+        <div class="row">
+            
+            <!-- Form -->
+            <div class="block" style="float: left; width: 50%" align="center">
+                <h1>Form</h1>
+                <form onsubmit="return validate()">
+                    <table cellspacing="2" cellpadding="8" border="0" >
+                        <tr>
+                            <td><p>Name: </p></td>
+                            <td><input type="text" id="name" name="name" /></td>
+                        </tr>
+                        <tr>
+                            <td><p>Roll Number: </p></td>
+                            <td><input type="number" id="roll" name="roll" /></td>
+                        </tr>
+                        <tr>
+                            <td><p>Course: </p></td>
+                            <td><input type="text" id="course" name="course" /></td>
+                        </tr>
+                        <tr>
+                            <td><p>Events: </p></td>
+                            <td>
+                                <div>
+                                    <input type="checkbox" name="e1" id="e1" value="Blind Coding" onclick="updateFee()"/>Blind Coding<br/>
+                                    <input type="checkbox" name="e2" id="e2" value="Overnight Coding" onclick="updateFee()"/>Overnight Coding<br/>
+                                    <input type="checkbox" name="e3" id="e3" value="Games" onclick="updateFee()"/>Games<br/>
+                                    <input type="checkbox" name="e4" id="e4" value="Online Treasure Hunt" onclick="updateFee()"/>Online Treasure Hunt<br/>
+                                    <input type="checkbox" name="e5" id="e5" value="Puzzles" onclick="updateFee()"/>Puzzles<br/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p>Total Fee: </p></td>
+                            <td>
+                                <input type="text" class="fee_input" id="fee" name="fee" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td>
+                                <p class="placeholder">100/- per event</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td class="col">
+                                <input type="submit" value="Add" class="btn"/>
+                                <input type="reset" value="Clear" class="btn" onclick="clearFunc()"/>                                
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            
+            <!-- Registration Summary -->
+            <div class="block" style="float: right; width: 50%" align="center">
+                <h1> Registration Summary </h1>
+                <table id="summary" cellspacing="2" cellpading="8" border="1" >
+                    <tr>
+                        <td class="col">
+                            <h3>Sl. No.</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Name</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Roll No.</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Course</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Events</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Fee</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Edit</h3>
+                        </td>
+                        <td class="col">
+                            <h3>Delete</h3>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" defer>
+            var ajaxRequest;
+            
+            function init() {
+                
+                edit = false;
+                
+                // fetchSummary();
+                
+                $("#summary").find("tr:gt(0)").remove();
+                
+                $.ajax({url: "./FetchSummary?", 
+                    success: function(data) {
+                        if(data){
+                            console.log(data);
+                            var len = data.length;
+                            var txt = "";
+                            if(len > 0){
+                                for(var i=0;i<len;i++){
+                                    txt += "<tr> <td class='col'>" + (i+1).toString() + "</td>"+
+                                            "<td class='col'>" + data[i].Name + "</td>"+
+                                            "<td class='col'>"+ data[i].Roll + "</td>" + 
+                                            "<td class='col'>" + data[i].Course + "</td>" + 
+                                            "<td class='col'>" + data[i].Events + "</td>" + 
+                                            "<td class='col'>" + data[i].Fee + "</td>" + 
+                                            "<td class='col'><input type='button' value='Edit' id='" + data[i].Roll + 
+                                            "' onclick='editEntry(this.id)'/></td>" + 
+                                            "<td class='col'><input type='button' value='Delete' id='" + data[i].Roll + 
+                                            "' onclick='deleteStudent(this.id)'/></td></tr>";
+                                    
+                                }
+                                if(txt != ""){
+                                    $("#summary").append(txt);
+                                }
+                            }
+                        }
+                    }
+                });
+                
+            }
+            
+            function createRequestObject() {
+                try{
+                    ajaxRequest = new XMLHttpRequest();
+                }
+                catch(e) {
+                    try{
+                        ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    catch (e) {
+                        try{
+                            ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        catch (e){
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+
+                }
+            }
+            
+            // use AJAX call to calculate fees and display dynamically
+            function updateFee() {
+//                console.log(document.getElementById("e1").checked);
+                createRequestObject();
+                
+                ajaxRequest.onreadystatechange = displayUpdatedFees;
+                var url = "./CalculateFees?";
+                for (let i=1; i<=5; i++){
+                    var id = "e"+ i.toString();
+                    var target = document.getElementById(id);
+                    url = url+id+"="+escape(target.checked)+";";
+                    
+                    if(i<5)
+                        url = url+"&";
+                }
+                
+                ajaxRequest.open("GET", url, true);
+                ajaxRequest.send(null);
+                //console.log(url);
+
+            }
+            
+            function displayUpdatedFees() {
+                
+                if(ajaxRequest.readyState == 4){
+                    
+                    console.log("Updating!");
+                    var ajaxDisplay = document.getElementById("fee");
+                    var text = ajaxRequest.responseText.toString();
+                    ajaxDisplay.value = text;
+                    console.log(text);
+                }
+            }
+            
+            function fetchSummary() {
+                createRequestObject();
+                
+                ajaxRequest.onreadystatechange = displaySummary;
+                var url = "./FetchSummary?";
+                ajaxRequest.open("GET", url, true);
+                ajaxRequest.send(null);
+                
+                window.location.reload();
+            }
+            
+            function deleteStudent(roll) {
+                createRequestObject();
+                
+                ajaxRequest.onreadystatechange = updateTable("Record deleted successfully!");
+                var url = "./DeleteStudent?roll="+roll+";";
+                ajaxRequest.open("GET", url, true);
+                ajaxRequest.send(null);
+            }
+                        
+            function updateTable(msg) {
+                console.log("done");
+                alert(msg);
+                window.location.reload();
+            }
+            
+            function editEntry(roll) {
+                
+                edit = true;
+                
+                $.ajax({url: "./FetchEntry?roll="+roll+";", 
+                    success: function(data) {
+                        if(data){
+                            console.log(data);
+                            document.getElementById("roll").value = data.Roll;
+                            document.getElementById("roll").readOnly = true;
+                            document.getElementById("name").value = data.Name;
+                            document.getElementById("course").value = data.Course;
+                            document.getElementById("fee").value = data.Fee;
+                            
+                            var events = data.Events;
+
+                            for(let i=1; i<=5; i++) {
+                                var id = "e"+i.toString();
+                                var event = document.getElementById(id).value;
+
+                                if(events.includes(event))
+                                    document.getElementById(id).checked = true;
+
+                            }
+
+                            $(document).ready(() => {
+                                alert("Data loaded successfully for editing but Roll number cannot be edited!");
+                            });
+
+                        }
+                    }
+                });
+            }
+            
+            function displayEntryInForm() {
+                
+                console.log(ajaxRequest.readyState);
+                console.log(ajaxRequest.responseText.toString());
+                if(ajaxRequest.readyState == 4){
+                    
+                    console.log("Displaying!");
+                    var roll = ajaxRequest.response.Roll.toString();
+                    var name = ajaxRequest.response.Name.toString();
+                    var course = ajaxRequest.response.Course.toString();
+                    var fee = ajaxRequest.response.Fee.toString();
+                    var events = ajaxRequest.response.Events.toString();
+                    
+                    document.getElementById("roll").value = roll;
+                    document.getElementById("roll").readOnly = true;
+                    document.getElementById("name").value = name;
+                    document.getElementById("course").value = course;
+                    document.getElementById("fee").value = fee;
+                    
+                    for(let i=1; i<=5; i++) {
+                        var id = "e"+i.toString();
+                        var event = document.getElementById(id).value;
+                        
+                        if(events.includes(event))
+                            document.getElementById(id).checked = true;
+                        
+                    }
+                    
+                    alert("Data loaded successfully for editing but Roll number cannot be edited!")
+                }
+                
+                window.location.reload();
+            }
+            
+            function validate() {
+                
+                var letters = /^[A-Za-z .]+$/;
+                
+                var roll = document.getElementById("roll").value;
+                var name = document.getElementById("name").value;
+                var course = document.getElementById("course").value;
+                var fee = document.getElementById("fee").value;
+                var events = "";
+                
+                if(name == "") {
+                    alert("Please enter your name");
+                    return false;
+                } else if(!letters.test(name)) {
+                    alert("Name can only have letters, spaces and dots");
+                    return false;
+                } else if(roll == "") {
+                    alert("Please enter your roll number");
+                    return false;
+                }  else if(course == "") {
+                   alert("Please enter your course");
+                    return false;
+                } else if(fee == "" || fee == 0) {
+                    alert("Please select atleast 1 event");
+                    return false;
+                } 
+                
+                createRequestObject();
+                
+                for(let i=1; i<=5; i++) {
+                    var id = "e" + i.toString();
+                    if(document.getElementById(id).checked) 
+                        events = events + document.getElementById(id).value + ",";
+                }
+                
+                events = events.substring(0, events.length - 1);
+                
+                var url;
+                if(edit){
+                    url = "./UpdateStudent?";
+                    ajaxRequest.onreadystatechange = updateTable("Record updated successfully!");
+                }
+                else{
+                    url = "./AddStudent?";
+                    ajaxRequest.onreadystatechange = updateTable("Record added successfully!");
+                }
+                url = url + "roll="+roll+";&name="+name+";&course="+course+";&events="+events+";&fee="+fee+";";
+                ajaxRequest.open("GET", url, true);
+                ajaxRequest.send(null);
+                edit = false;
+                
+                return true;
+            }
+            
+            function clearFunc() {
+                document.getElementById("e1").checked = false;
+                document.getElementById("e2").checked = false;
+                document.getElementById("e3").checked = false;
+                document.getElementById("e4").checked = false;
+                document.getElementById("e5").checked = false;
+                document.getElementById("name").value = "";
+                document.getElementById("roll").value = "";
+                document.getElementById("fee").value = "";
+                document.getElementById("course").value = "";
+                document.getElementById("roll").readOnly = true;
+                
+                window.location.reload();
+              }
+            
+        </script>
+    </body>
+    
+    
+        
+</html>
