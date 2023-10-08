@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>New User</title>
+        <style>
+            .key {
+                display: inline-block;
+            }
+            .value{
+                display: inline-block;
+            }
+        </style>
+        
+        <script>
+            
+            function validate() {
+                var uname = document.getElementById("uname").value;
+                var pwd = document.getElementById("pwd").value;
+                var cpwd = document.getElementById("cpwd").value;
+                var roll = document.getElementById("roll").value;
+                var name = document.getElementById("name").value;
+                var address = document.getElementById("addr").value;
+                var email = document.getElementById("email").value;
+                var phone = document.getElementById("phone").value;
+                var year = document.getElementById("year").value;
+                var branch = document.getElementById("branch").value;
+                var father = document.getElementById("father").value;
+
+                var pwd_expression =
+                  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+                var letters = /^[A-Za-z]+$/;
+
+                console.log("In registeration");
+
+                if (uname == "") {
+                  alert("Please enter your username");
+                } else if(!letters.test(uname)){
+                    alert("Username can only contain letters")
+                } else if(roll == ""){
+                    alert("Enter your roll number");
+                } else if(name == "") {
+                    alert("Enter your name");
+                } else if(father == ""){
+                    alert("Enter your father's name");
+                } else if(branch == ""){
+                    alert("Enter your Branch");
+                } else if(year == ""){
+                    alert("Enter your year");
+                } else if(email == ""){
+                    alert("Enter your email ID");
+                } else if(phone == ""){
+                    alert("Enter your phone number");
+                } else if(addr == ""){
+                    alert("Enter your address");
+                } else if (pwd == "") {
+                    alert("Please enter your password");
+                } else if (!pwd_expression.test(pwd)) {
+                    alert(
+                      "Password must have atleast one upper case letter, lower case letter, special character and digit"
+                    );
+                } else if (pwd.length < 6) {
+                    alert("Password minimum length is 6");
+                } else if (pwd.length > 12) {
+                    alert("Password max length is 12");
+                } else if (cpwd == "") {
+                    alert("Please confirm your password");
+                } else if (pwd != cpwd) {
+                    alert("Password and confirm password don't match!");
+                } else {
+                    return true;
+                }
+                return false;
+          
+            }
+            
+            function clear() {
+                document.getElementById("uname").value = ""
+                document.getElementById("pwd").value = ""
+                document.getElementById("cpwd").value = ""
+                document.getElementById("roll").value = "";
+                document.getElementById("name").value = "";
+                document.getElementById("addr").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("phone").value = "";
+                document.getElementById("year").value = "";
+                document.getElementById("branch").value = "";
+                document.getElementById("father").value = "";
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <h1>New User</h1>
+        <form method='post' onsubmit='return validate()' action='AddUser'>
+            <h4 class='key'>User Id:</h4>
+            <input class='value' type='text' id='uname' name='uname'><br>
+            <h4 class='key'>Roll No:</h4>
+            <input class='value' type='number' id='roll' name='roll'><br>
+            <h4 class='key'>Name:</h4>
+            <input class='value' type='text' id='name' name='name'><br>
+            <h4 class='key'>Father's Name:</h4>
+            <input class='value' type='text' id='father' name='father'><br>
+            <h4 class='key'>Branch:</h4>
+            <input class='value' type='text' id='branch' name='branch'><br>
+            <h4 class='key'>Year:</h4>
+            <input class='value' type='number' id='year' name='year'><br>
+            <h4 class='key'>Email:</h4>
+            <input class='value' type='text' id='email' name='email'><br>
+            <h4 class='key'>Phone:</h4>
+            <input class='value' type='number' id='phone' name='phone'><br>
+            <h4 class='key'>Address:</h4>
+            <input class='value' id='addr' name='addr'><br>
+            <h4 class='key'>Password: </h4>
+            <input class='value' type='password' id='pwd' name='pwd'><br>
+            <h4 class='key'>Confirm Password: </h4>
+            <input class='value' type='password' id='cpwd' name='cpwd'><br>
+            
+            <!-- add pwd and cpwd -->
+            
+            <input type='submit' value='Submit' > 
+            <input type='reset' value='Clear' onclick='clear()'> 
+        </form>
+        </center>
+    </body>
+</html>

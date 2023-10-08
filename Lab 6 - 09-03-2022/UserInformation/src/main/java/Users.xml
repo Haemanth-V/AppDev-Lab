@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Users>
+             
+        
+    
+    <User>
+                        
+        
+        <username>haemanth</username>
+                
+        <password>Haem@1010200</password>
+                
+        <name>Haemanth V</name>
+                
+        <roll>106119043</roll>
+                
+        <father_name>Velmurugan G</father_name>
+                
+        <branch>CSE</branch>
+                
+        <year>3</year>
+                
+        <email>haemanth10@gmail.com</email>
+                
+        <phone>8778245949</phone>
+                
+        <address>16, Flat F4, Block-A, Keshav Enclave, Mannady street, Villivakkam, Chennai</address>
+                            
+    
+    
+    </User>
+                   
+        
+    
+    <User>
+                        
+        
+        <username>hello</username>
+                
+        <password>Hi@123</password>
+                
+        <name>Ram</name>
+                
+        <roll>109011010</roll>
+                
+        <father_name>Ganesh</father_name>
+                        
+        
+        <branch>EEE</branch>
+                        
+        
+        <year>2</year>
+                        
+        
+        <email>ramEEE@gmail.com</email>
+                        
+        
+        <phone>9876543210</phone>
+                        
+        
+        <address>ABC, XYZ Street, TN</address>
+                    
+    
+    </User>
+            
+   
+                
+    
+    
+    <User>
+                        
+        
+        <username>shyamMech</username>
+                        
+        
+        <password>Pass2word.</password>
+                        
+        
+        <name>Shyam</name>
+                        
+        
+        <roll>112110010</roll>
+                        
+        
+        <father_name>Gopi</father_name>
+                        
+        
+        <branch>Prod</branch>
+                        
+        
+        <year>1</year>
+                        
+        
+        <email>shyam@gmail.com</email>
+                        
+        
+        <phone>9876543210</phone>
+                        
+        
+        <address>LMN, PQR Street, TN</address>
+                    
+    
+    </User>
+            
+    
+    
+    <User>
+                        
+        
+        <username>abhinav</username>
+                        
+        
+        <password>Abhinav@123</password>
+                        
+        
+        <name>Abhinav Kothari</name>
+                        
+        
+        <roll>110110001</roll>
+                        
+        
+        <father_name>Virat</father_name>
+                        
+        
+        <branch>Mech</branch>
+                        
+        
+        <year>3</year>
+                        
+        
+        <email>kothari.abhinav@gmail.com</email>
+                        
+        
+        <phone>8787868683</phone>
+                        
+        
+        <address>XYZ, PQR Street, Rajasthan</address>
+                    
+    
+    </User>
+            
+    
+    <User>
+                        
+        
+        <username>rg</username>
+                        
+        
+        <password>Abhishek@123</password>
+                        
+        
+        <name>Abhishek Vijayan</name>
+                        
+        
+        <roll>102119004</roll>
+                        
+        
+        <father_name>Vijayan</father_name>
+                        
+        
+        <branch>Civil</branch>
+                        
+        
+        <year>3</year>
+                        
+        
+        <email>abhishekRG@gmail.com</email>
+                        
+        
+        <phone>9097654892</phone>
+                        
+        
+        <address>LMN, ABC Street, Kerala</address>
+                    
+    
+    </User>
+            
+    
+    
+        
+    
+    <User>
+                        
+        
+        <username>rutz</username>
+                        
+        
+        <password>Rutwiz@123</password>
+                        
+        
+        <name>Rutwiz A</name>
+                        
+        
+        <roll>109119003</roll>
+                        
+        
+        <father_name>Prabhu</father_name>
+                        
+        
+        <branch>ICE</branch>
+                        
+        
+        <year>2</year>
+                        
+        
+        <email>rutwiz@gmail.com</email>
+                        
+        
+        <phone>9384756290</phone>
+                        
+        
+        <address>GHI, DEF Street, TN</address>
+                    
+    
+    </User>
+            
+    
+        
+    
+    <User>
+                        
+        
+        <username>chanime</username>
+                        
+        
+        <password>Chandan@123</password>
+                        
+        
+        <name>Chandan Kumar</name>
+                        
+        
+        <roll>107119064</roll>
+                        
+        
+        <father_name>Raj</father_name>
+                        
+        
+        <branch>ECE</branch>
+                        
+        
+        <year>2</year>
+                        
+        
+        <email>chandan.anime@gmail.com</email>
+                        
+        
+        <phone>9543678201</phone>
+                        
+        
+        <address>PQR, ABC Street, Meghalaya</address>
+                    
+    
+    </User>
+            
+    
+        
+    
+    <User>
+                        
+        
+        <username>appD</username>
+                        
+        
+        <password>Ankur@123</password>
+                        
+        
+        <name>Ankur Sinha</name>
+                        
+        
+        <roll>107119011</roll>
+                        
+        
+        <father_name>Veer</father_name>
+                        
+        
+        <branch>ECE</branch>
+                        
+        
+        <year>3</year>
+                        
+        
+        <email>ankur.appD@gmail.com</email>
+                        
+        
+        <phone>9098763425</phone>
+                        
+        
+        <address>HIJ, ABC Street, Delhi</address>
+                    
+    
+    </User>
+            
+   
+        
+    
+    <User>
+                        
+        
+        <username>SFPOC</username>
+                        
+        
+        <password>Dharun@123</password>
+                        
+        
+        <name>Dharun Vaibhav</name>
+                        
+        
+        <roll>110110032</roll>
+                        
+        
+        <father_name>Rajesh</father_name>
+                        
+        
+        <branch>ICE</branch>
+                        
+        
+        <year>3</year>
+                        
+        
+        <email>dharun@gmail.com</email>
+                        
+        
+        <phone>7673458290</phone>
+                        
+        
+        <address>ABC, HIJ Street, Coimbatore</address>
+                    
+    
+    </User>
+            
+    
+        
+    
+    <User>
+                        
+        
+        <username>CR</username>
+                
+        <password>Gokul@123</password>
+                
+        <name>Gokul P</name>
+                
+        <roll>106119039</roll>
+                
+        <father_name>Pandu</father_name>
+                
+        <branch>CSE</branch>
+                
+        <year>3</year>
+                
+        <email>gokulp@gmail.com</email>
+                
+        <phone>9032145678</phone>
+                
+        <address>PQR, HIJ Street, Coimbatore</address>
+                    
+    
+    </User>
+            
+    
+    
+
+    
+    <User>
+                
+        <username>welcome</username>
+                
+        <password>Kishore@12</password>
+                
+        <name>Nandhakishore</name>
+                
+        <roll>106119083</roll>
+                
+        <father_name>Rangansamy</father_name>
+                
+        <branch>CSE</branch>
+                
+        <year>3</year>
+                
+        <email>kishore@gmail.com</email>
+                
+        <phone>9876543290</phone>
+                
+        <address>ABC, IJK Street, TN</address>
+            
+    </User>
+        
+
+</Users>

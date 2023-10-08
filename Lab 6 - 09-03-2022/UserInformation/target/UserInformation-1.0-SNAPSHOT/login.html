@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style type="text/css">
+            body {
+                /* background-color: #0066ff; */
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            label, input {
+                display: table-row;
+                margin-top: 15px;
+                margin-right: 10px;
+                height: 20px;
+                align-content: center;
+            }
+            
+            label .button {
+                height: 30px;
+                border-radius: 5px;
+                width: 80px;
+            }
+
+            label {
+                margin-bottom: 20px;
+            }
+        </style>
+        
+        <script>
+          function registration() {
+            var uname = document.getElementById("t1").value;
+            var pwd = document.getElementById("t2").value;
+            
+            var pwd_expression =
+              /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+            var letters = /^[A-Za-z]+$/;
+            
+            console.log("In registeration");
+
+            if (uname == "") {
+              alert("Please enter your username");
+            } else if(!letters.test(uname)){
+                alert("Username can only contain letters")
+            } else if (pwd == "") {
+                alert("Please enter your password");
+            } else if (!pwd_expression.test(pwd)) {
+                alert(
+                  "Password must have atleast one upper case letter, lower case letter, special character and digit"
+                );
+            } else if (pwd.length < 6) {
+                alert("Password minimum length is 6");
+            } else if (pwd.length > 12) {
+                alert("Password max length is 12");
+            } else {
+                return true;
+            }
+            return false;
+          }
+        </script>
+        
+        
+        
+    </head>
+    <body>
+        <div id="main">
+            <center>
+                <h1>Login</h1>
+                <Form name="Login" method="post"> 
+                    <label>
+                        <input type="textbox" name="uname" value="Username" readonly/>
+                        <input type="textbox" name="username" id="t1"/>
+                    </label>
+                    <label>
+                        <input type="textbox" name="pwd" value="Password" readonly/>
+                        <input type="password" name="password" id="t2"/><br><br>
+                    </label>
+                    <label>
+                        <input class="button" type="submit" value="Sign In" onclick="return registration()" formaction="LoginServlet"/>
+                        <input class="button" type="submit" value="Sign Up" formaction="NewUser.html" />
+                    </label>
+                </form>
+            </center>
+        </div>
+    </body>
+</html>
+
